@@ -7,32 +7,33 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
 contract CSDP is ERC20, ERC20Permit, Ownable, ReentrancyGuard {
     uint256 public tokenPrice;
+
+    // to restrict the total supply of CSDP
     uint256 private totalTokenSupply;
 
     constructor(uint256 price) 
         ERC20("CSDP", "CSDP") 
         ERC20Permit("CSDP")
-        Ownable(0xa0b8234297c8c9BA5f2e0B9d84791232ef1B78A9) // Specify the Ownable constructor
+        Ownable(msg.sender) // Specify the Ownable constructor
     {
-        totalTokenSupply = 1000000000000000000000000;
+        totalTokenSupply = 1000000000000000000000000; // 1 million total supply
         tokenPrice = price;
-        totalTokenSupply -= 100000000000000000000;
-        _mint(0xa0b8234297c8c9BA5f2e0B9d84791232ef1B78A9, 100000000000000000000);
+        totalTokenSupply -= 100000000000000000000; // 100 tokens to the owner
+        _mint(msg.sender, 100000000000000000000); // 100 tokens to the owner
     }
 
     // This function will be called whenever Ether is sent to the contract
     receive() external payable nonReentrant {
-        require(msg.value > 0, "You must send Ether to mint tokens");
+        require(msg.value > 0, "You must send Ether to get tokens");
         
-        uint256 amountToMint = msg.value / tokenPrice; // Calculate amount of tokens to mint
-        require(amountToMint > 0, "Insufficient Ether sent for minting tokens");
-        require(totalTokenSupply > 0, "No more tokens can be minted");
+        uint256 amountToMint = msg.value / tokenPrice; // currently 1 wei = 1 CSDP (might change in future)
+        require(totalTokenSupply > 0, "No more tokens can be minted"); // with this overflow is taken care of 
         
         totalTokenSupply -= amountToMint;
         _mint(msg.sender, amountToMint); // Mint tokens to the sender
     }
 
-    function withdraw() public onlyOwner {
+    function withdraw() public nonReentrant onlyOwner {
         payable(owner()).transfer(address(this).balance); // Withdraw Ether from the contract
     }
 
@@ -40,8 +41,9 @@ contract CSDP is ERC20, ERC20Permit, Ownable, ReentrancyGuard {
         tokenPrice = newPrice; // Update the token price
     }
      
-    function transfer(address to, uint256 value) override public returns (bool) {
-        _burn(address(0), value*2/100000); // burn 0.002% of the token on every txn
-        return super.transfer(to, value);
+    function transfer(address to, uint256 value) override public nonReentrant returns (bool) {
+        uint256 burnAmount = value * 2 / 100000; // 0.002% 
+        _burn(msg.sender, burnAmount); // burn 0.002% of the token on every txn
+        return super.transfer(to, value - burnAmount);
     }
 }
