@@ -11,22 +11,26 @@ contract CSDP is ERC20, ERC20Permit, Ownable, ReentrancyGuard {
     // to restrict the total supply of CSDP
     uint256 private totalTokenSupply;
 
-    constructor(uint256 price) 
+    constructor()
         ERC20("CSDP", "CSDP") 
         ERC20Permit("CSDP")
         Ownable(msg.sender) // Specify the Ownable constructor
     {
-        totalTokenSupply = 1000000000000000000000000; // 1 million total supply
-        tokenPrice = price;
-        totalTokenSupply -= 100000000000000000000; // 100 tokens to the owner
-        _mint(msg.sender, 100000000000000000000); // 100 tokens to the owner
+        totalTokenSupply = 1000000000000000000000000000; // 1 million total supply
+        tokenPrice = 1;
+        totalTokenSupply -= 100000000000000000000000; // 100 tokens to the owner
+        _mint(msg.sender, 100000000000000000000000); // 100 tokens to the owner
+    }
+
+    function decimals() public pure override returns (uint8) {
+        return 21;
     }
 
     // This function will be called whenever Ether is sent to the contract
     receive() external payable nonReentrant {
         require(msg.value > 0, "You must send Ether to get tokens");
         
-        uint256 amountToMint = msg.value / tokenPrice; // currently 1 wei = 1 CSDP (might change in future)
+        uint256 amountToMint = msg.value / tokenPrice * 1000; // currently 1 wei = 1 CSDP (might change in future)
         require(totalTokenSupply > 0, "No more tokens can be minted"); // with this overflow is taken care of 
         
         totalTokenSupply -= amountToMint;

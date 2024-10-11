@@ -6,13 +6,7 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "price",
-						"type": "uint256"
-					}
-				],
+				"inputs": [],
 				"stateMutability": "nonpayable",
 				"type": "constructor"
 			},
@@ -375,7 +369,7 @@
 						"type": "uint8"
 					}
 				],
-				"stateMutability": "view",
+				"stateMutability": "pure",
 				"type": "function"
 			},
 			{
@@ -980,11 +974,11 @@
 			]
 		},
 		"contracts/CSDP.sol": {
-			"keccak256": "0x180262828e79ecac2dbd1cdcaf07b53e7c7f12bff6442bdbd07b3401b9f45f0b",
+			"keccak256": "0x250ed9cbf59c5fd45b6ac3aa15df6f93d4e17940c0a8f4c847f5fc6c4003af1e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://13b06f1f3ec0f7789c51373677404b6494c35d36ebc272331c7bc587d30b18bc",
-				"dweb:/ipfs/QmUa1krjrdn2kDmqUPpAdkumfHB4nnEivSKM3sJgPZx7Qw"
+				"bzz-raw://35860f3f1e85eee1e8c37287da9850510bba79d8e817a211ec1aa4cdeb8556bd",
+				"dweb:/ipfs/QmSXMBeMY9jaRqw9YFLdk76pKJ8GcJKexk7At7tVYc7Qx3"
 			]
 		}
 	},
