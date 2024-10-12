@@ -23,7 +23,7 @@ contract CSDP is ERC20, ERC20Permit, Ownable, ReentrancyGuard {
     }
 
     function decimals() public pure override returns (uint8) {
-        return 21;
+        return 15;
     }
 
     // This function will be called whenever Ether is sent to the contract
