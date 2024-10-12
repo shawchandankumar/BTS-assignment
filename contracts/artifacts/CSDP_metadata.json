@@ -369,7 +369,7 @@
 						"type": "uint8"
 					}
 				],
-				"stateMutability": "pure",
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -974,11 +974,11 @@
 			]
 		},
 		"contracts/CSDP.sol": {
-			"keccak256": "0xb04f35450155d37378d9a415c49cdd2a0fa84208c5a3088d82ead4d5e73267b9",
+			"keccak256": "0xea97125f5b94bf3f74a35e63885cdb7fb03b9335fdbc8cf3f602fe39b0d6a11c",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5aff7e658489f1edd0fbfe8ff5ea6f1f4e60a8a580e8964e4e94f458d39eae0c",
-				"dweb:/ipfs/QmfLFX8E5mV44MReTBNQbHoiM88i4V8kVcEqm9D9AFhYPd"
+				"bzz-raw://fc6aafa344deac5c1b58cfe2320ea01f4483e70a9c8a0628d5abe6617d98d04b",
+				"dweb:/ipfs/QmYEPWbrEpNcXcnVVcw9ENuiFruQ9VHNumoMabYVz1Abnc"
 			]
 		}
 	},

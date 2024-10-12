@@ -16,14 +16,10 @@ contract CSDP is ERC20, ERC20Permit, Ownable, ReentrancyGuard {
         ERC20Permit("CSDP")
         Ownable(msg.sender) // Specify the Ownable constructor
     {
-        totalTokenSupply = 1000000000000000000000000000; // 1 million total supply
+        totalTokenSupply = 100000000 * 10 ** uint(decimals()); // 100 million total supply
         tokenPrice = 1;
-        totalTokenSupply -= 100000000000000000000000; // 100 tokens to the owner
-        _mint(msg.sender, 100000000000000000000000); // 100 tokens to the owner
-    }
-
-    function decimals() public pure override returns (uint8) {
-        return 15;
+        totalTokenSupply -= 100000 * 10 ** uint(decimals()); // 100 tokens to the owner
+        _mint(msg.sender, 100000 * 10 ** uint(decimals())); // 100 tokens to the owner
     }
 
     // This function will be called whenever Ether is sent to the contract
