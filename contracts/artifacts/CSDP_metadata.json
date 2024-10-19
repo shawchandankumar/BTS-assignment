@@ -974,11 +974,11 @@
 			]
 		},
 		"contracts/CSDP.sol": {
-			"keccak256": "0xea97125f5b94bf3f74a35e63885cdb7fb03b9335fdbc8cf3f602fe39b0d6a11c",
+			"keccak256": "0x4df839be9e703f4a486edde61300107cc7550e0b9c0bad43002b9137fb28b5a3",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://fc6aafa344deac5c1b58cfe2320ea01f4483e70a9c8a0628d5abe6617d98d04b",
-				"dweb:/ipfs/QmYEPWbrEpNcXcnVVcw9ENuiFruQ9VHNumoMabYVz1Abnc"
+				"bzz-raw://e179085605e6fe5b3bef2b6b025499dab285f6892fec6a0ea9b1503b92c57519",
+				"dweb:/ipfs/QmdwGbSo1ebrV3JVvmD7aV7scan8KRmLsK8FMMFTcfViW8"
 			]
 		}
 	},
