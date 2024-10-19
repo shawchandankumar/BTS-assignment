@@ -26,7 +26,7 @@ contract CSDP is ERC20, ERC20Permit, Ownable, ReentrancyGuard {
     receive() external payable nonReentrant {
         require(msg.value > 0, "You must send Ether to get tokens");
         
-        uint256 amountToMint = msg.value / tokenPrice * 1000; // currently 1 wei = 1 CSDP (might change in future)
+        uint256 amountToMint = msg.value / tokenPrice * 1000; // currently 1 wei = 10^-15 CSDP (might change in future)
         require(totalTokenSupply > 0, "No more tokens can be minted"); // with this overflow is taken care of 
         
         totalTokenSupply -= amountToMint;
