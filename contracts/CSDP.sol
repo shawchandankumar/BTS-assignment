@@ -18,8 +18,8 @@ contract CSDP is ERC20, ERC20Permit, Ownable, ReentrancyGuard {
     {
         totalTokenSupply = 100000000 * 10 ** uint(decimals()); // 100 million total supply
         tokenPrice = 1;
-        totalTokenSupply -= 100000 * 10 ** uint(decimals()); // 100 tokens to the owner
-        _mint(msg.sender, 100000 * 10 ** uint(decimals())); // 100 tokens to the owner
+        totalTokenSupply -= 100000 * 10 ** uint(decimals());
+        _mint(msg.sender, 100000 * 10 ** uint(decimals())); // 1 lakh tokens to the owner
     }
 
     // This function will be called whenever Ether is sent to the contract
