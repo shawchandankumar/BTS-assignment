@@ -46,4 +46,8 @@ contract CSDP is ERC20, ERC20Permit, Ownable, ReentrancyGuard {
         _burn(msg.sender, burnAmount); // burn 0.002% of the token on every txn
         return super.transfer(to, value - burnAmount);
     }
+
+    function transferFrom(address from, address to, uint256 value) override public nonReentrant returns (bool) {
+        return super.transferFrom(from, to, value);
+    }
 }
